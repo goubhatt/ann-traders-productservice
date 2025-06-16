@@ -1,0 +1,15 @@
+#databaseChangeLog:
+#    - includeAll:
+#        path: db/changelog/include
+
+databaseChangeLog:
+  - include:
+      file: db/changelog/include/db.changelog-T000-C-create-schema.yaml
+  - include:
+      file: db/changelog/include/db.changelog-T-S-create-sequence.yaml
+  - include:
+      file: db/changelog/include/db.changelog-T-C-create-table.yaml
+  - include:
+      file: db/changelog/include/db.changelog-T-D-insert-initial-data.yaml
+  - include:
+      file: db/changelog/include/db.changelog-T-I-create-index.yaml

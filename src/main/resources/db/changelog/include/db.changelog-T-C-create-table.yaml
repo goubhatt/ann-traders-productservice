@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - logicalFilePath: "db.changelog-T-C-create-table.yaml"
+  - changeSet:
+      id: create-users-table
+      author: anntraderadmin
+      sqlFile:
+        path: ../sqlscripts/T001-1-C-create-table-users.sql
+        relativeToChangelogFile: true
+        encoding: utf8
+        splitStatements: true
+        stripComments: true
+
+  - changeSet:
+      id: create-products-table
+      author: anntraderadmin
+      sqlFile:
+        path: ../sqlscripts/T002-1-C-create-table-products.sql
+        relativeToChangelogFile: true
+        encoding: utf8
+        splitStatements: true
+        stripComments: true

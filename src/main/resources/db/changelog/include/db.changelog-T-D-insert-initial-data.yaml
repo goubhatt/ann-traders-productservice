@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - logicalFilePath: "db.changelog-T-D-insert-initial-data.yaml"
+  - changeSet:
+      id: TD-001
+      runOnChange: true
+      author: anntraderadmin
+      changes:
+        - sqlFile:
+            path: ../sqlscripts/T001-4-D-insert-initial-data-users.sql
+            relativeToChangelogFile: true
+            encoding: utf8
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: TD-002
+      runOnChange: true
+      author: anntraderadmin
+      changes:
+        - sqlFile:
+            path: ../sqlscripts/T002-4-D-insert-initial-data-products.sql
+            relativeToChangelogFile: true
+            encoding: utf8
+            splitStatements: true
+            stripComments: true

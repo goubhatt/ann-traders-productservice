@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ann-traders-db.cqd0mi6o89qn.us-east-1.rds.amazonaws.com:5432/anntradersdb
+    username: postgresann
+    password: AnnDemo#2025
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: changelog-master.yaml
+    enabled: true
+
+  profiles:
+    active: local
+cognito:
+  token-uri: https://us-east-1zvty5khu2.auth.us-east-1.amazoncognito.com/oauth2/token
+  client-id: 59jadlp6gf6u9ffd5com7t6nk1
+  client-secret: iv61g5787cj03i57sfvb5n2cn6tbf6l0hfmcefovvjgu26unj2a
+  redirect-uri: https://dak1rhhm5u7vh.cloudfront.net/welcome
+  #redirect-uri: http://localhost:8080/callback
+
+auth:
+  local-bypass-enabled: true
+
+
+

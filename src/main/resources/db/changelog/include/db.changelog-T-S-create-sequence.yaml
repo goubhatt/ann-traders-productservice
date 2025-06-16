@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - logicalFilePath: "db.changelog-T-S-create-sequence.yaml"
+  - changeSet:
+      id: T001-2-S-create-sequence-users
+      author: anntraderadmin
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: ../sqlscripts/T001-2-S-create-sequence-users.sql
+            encoding: utf8
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
+
+  - changeSet:
+      id: T002-2-S-create-sequence-products
+      author: anntraderadmin
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: ../sqlscripts/T002-2-S-create-sequence-products.sql
+            encoding: utf8
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ;
