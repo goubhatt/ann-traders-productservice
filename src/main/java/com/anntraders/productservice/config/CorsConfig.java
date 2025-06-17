@@ -33,7 +33,9 @@ public class CorsConfig {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
 
-            res.setHeader("Access-Control-Allow-Origin", "*");
+            //res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+            res.setHeader("Vary", "Origin");
             res.setHeader("Access-Control-Allow-Headers", "*");
             res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 
