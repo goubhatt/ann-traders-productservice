@@ -33,22 +33,23 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts(code));
     }
 
-/*    @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody ProductDto dto, @RequestParam String code) {
-        return ResponseEntity.ok(productService.updateProduct(id, dto, code));
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDto dto, @RequestParam String code) {
+        try {
+            Product updated = productService.updateProduct(id, dto, code);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id, @RequestParam String code) {
-        productService.deleteProduct(id, code);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id, @RequestParam String code) {
+        try {
+            productService.deleteProduct(id, code);
+            return ResponseEntity.ok(Map.of("message", "Deleted"));
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+        }
     }
-
-    @GetMapping("/search")
-    public ResponseEntity<List<Product>> searchProducts(
-            @RequestParam String code,
-            @RequestParam(required = false) String name
-    ) {
-        return ResponseEntity.ok(productService.searchProducts(code, name));
-    }*/
 }

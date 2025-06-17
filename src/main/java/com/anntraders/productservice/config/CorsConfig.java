@@ -36,7 +36,8 @@ public class CorsConfig {
             //res.setHeader("Access-Control-Allow-Origin", "*");
             res.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
             res.setHeader("Vary", "Origin");
-            res.setHeader("Access-Control-Allow-Headers", "*");
+            //res.setHeader("Access-Control-Allow-Headers", "*");
+            res.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, X-Amz-Date, X-Api-Key, X-Amz-Security-Token");
             res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 
             if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
