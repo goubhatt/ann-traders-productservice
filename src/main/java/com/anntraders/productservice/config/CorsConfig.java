@@ -37,7 +37,7 @@ public class CorsConfig {
             res.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
             res.setHeader("Vary", "Origin");
             res.setHeader("Access-Control-Allow-Headers", "*");
-            res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 
             if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
                 res.setStatus(HttpServletResponse.SC_OK);

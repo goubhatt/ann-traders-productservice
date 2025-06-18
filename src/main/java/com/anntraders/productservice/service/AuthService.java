@@ -44,16 +44,20 @@ public class AuthService {
             log.debug("Sending request to: {}", tokenUri);
             log.debug("With client_id={}, redirect_uri={}, code={}", clientId, redirectUri, code);
 
+            StringBuilder form = new StringBuilder()
+                    .append("grant_type=authorization_code")
+                    .append("&client_id=").append(clientId)
+                    .append("&redirect_uri=").append(redirectUri)
+                    .append("&code=").append(code);
+
+            if (clientSecret != null && !clientSecret.isBlank()) {
+                form.append("&client_secret=").append(clientSecret);
+            }
+
             String responseBody = webClient.post()
                     .uri(tokenUri)
                     .header("Content-Type", "application/x-www-form-urlencoded")
-                    .bodyValue(
-                            "grant_type=authorization_code" +
-                                    "&client_id=" + clientId +
-                                    "&client_secret=" + clientSecret +
-                                    "&redirect_uri=" + redirectUri +
-                                    "&code=" + code
-                    )
+                    .bodyValue(form.toString())
                     .retrieve()
                     .bodyToMono(String.class)
                     .doOnNext(body -> log.debug("Cognito token response: {}", body))
@@ -71,10 +75,22 @@ public class AuthService {
         }
     }
 
+
     public User validateOrCreateUser(String code) {
         String cognitosub;
         String email;
         String username;
+
+        //Temporary block
+        String idTokenTemp = null;
+        try {
+            idTokenTemp = exchangeCodeForToken(code);
+            if (idTokenTemp != null) {
+                log.info("##########################################  Fetched ID token successfully: {}", idTokenTemp);
+            }
+        } catch (Exception ex) {
+            log.info("##########################################  Fetched ID token failed: {}", ex.getMessage());
+        }
 
         if (localBypassEnabled) {
             log.warn("Local bypass enabled. Using dummy user values.");
