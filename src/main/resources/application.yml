@@ -20,8 +20,8 @@ cognito:
   token-uri: https://us-east-1zvty5khu2.auth.us-east-1.amazoncognito.com/oauth2/token
   client-id: 5c6hfnre21hvjgvtkgc2u6q4ph
   client-secret: ""
-  #redirect-uri: https://dak1rhhm5u7vh.cloudfront.net/welcome
-  redirect-uri: http://localhost:3000/welcome
+  redirect-uri: https://dak1rhhm5u7vh.cloudfront.net/welcome
+  #redirect-uri: http://localhost:3000/welcome
 
 auth:
   local-bypass-enabled: true
