@@ -67,7 +67,7 @@ public class ProductService {
                 .orElseGet(() -> userRepository.save(new User(
                         null,
                         userInfo.sub(),
-                        userInfo.email(),
+                        userInfo.username(),
                         userInfo.email(),
                         "USER",
                         userInfo.username(),
