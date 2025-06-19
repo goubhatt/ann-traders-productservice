@@ -68,7 +68,7 @@ public class ProductService {
                         null,
                         userInfo.sub(),
                         userInfo.email(),
-                        userInfo.username(),
+                        userInfo.email(),
                         "USER",
                         userInfo.username(),
                         LocalDateTime.now(),
